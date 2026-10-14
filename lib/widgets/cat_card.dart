@@ -19,15 +19,31 @@ class CatCard extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Column(
           spacing: 20,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              spacing: 10,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Icon(Icons.pets), Text(name)],
+              spacing: 8,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.pets),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight(500),
+                        ),
+                      ),
+                      Text('Возраст: $age года'),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Text('Возраст: $age года'),
-            Text(description, textAlign: TextAlign.center),
+            Text(description, textAlign: TextAlign.start),
           ],
         ),
       ),

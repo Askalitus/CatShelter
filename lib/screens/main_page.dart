@@ -26,6 +26,11 @@ class MainPage extends StatelessWidget {
                 description: "Спокойный и добрый.",
               ),
               CatCard(name: "Рыжик", age: 1, description: "Энергичный котик."),
+              CatCard(
+                name: "Его котейшество Барсик Великолепный Первый",
+                age: 1,
+                description: "Самый важный кот нашего приюта.",
+              ),
             ],
           ),
         ),
