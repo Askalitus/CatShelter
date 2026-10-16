@@ -8,13 +8,16 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Кошачий приют'), centerTitle: true),
-      body: const Padding(
-        padding: EdgeInsets.all(20),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
             spacing: 20,
             children: [
-              Text("Наши котики"),
+              Text(
+                style: Theme.of(context).textTheme.titleLarge,
+                "Наши котики",
+              ),
               CatCard(
                 name: "Барсик",
                 age: 3,

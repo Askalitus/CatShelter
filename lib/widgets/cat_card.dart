@@ -30,20 +30,21 @@ class CatCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(name, style: Theme.of(context).textTheme.titleLarge),
                       Text(
-                        name,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight(500),
-                        ),
+                        'Возраст: $age года',
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      Text('Возраст: $age года'),
                     ],
                   ),
                 ),
               ],
             ),
-            Text(description, textAlign: TextAlign.start),
+            Text(
+              description,
+              textAlign: TextAlign.start,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ],
         ),
       ),
