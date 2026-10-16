@@ -13,6 +13,6 @@ class CatShelterApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: AppTheme.lightTheme, home: MainPage());
+    return MaterialApp(theme: AppTheme.lightTheme, home: const MainPage());
   }
 }

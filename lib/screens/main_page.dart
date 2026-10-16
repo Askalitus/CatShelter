@@ -15,7 +15,7 @@ class MainPage extends StatelessWidget {
             spacing: 20,
             children: [
               Text(
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.headlineMedium,
                 "Наши котики",
               ),
               CatCard(
