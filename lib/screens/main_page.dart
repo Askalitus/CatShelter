@@ -8,9 +8,8 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<CatCard> cats = mockCats
-        .map((cat) => CatCard(cat: cat))
-        .toList();
+    final Iterable<CatCard> cats = mockCats
+        .map((cat) => CatCard(cat: cat));
 
     return Scaffold(
       appBar: AppBar(title: Text('Кошачий приют'), centerTitle: true),
