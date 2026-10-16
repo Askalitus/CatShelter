@@ -17,7 +17,7 @@ class CatCard extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return Card(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       color: colors.surfaceContainerLow,
