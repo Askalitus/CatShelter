@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:cat_shelter/widgets/cat_card.dart';
-import 'package:cat_shelter/models/cat.dart';
+import 'package:cat_shelter/data/mock_cats.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<CatCard> cats = mockCats
+        .map((cat) => CatCard(cat: cat))
+        .toList();
+
     return Scaffold(
       appBar: AppBar(title: Text('Кошачий приют'), centerTitle: true),
       body: Padding(
@@ -18,40 +22,9 @@ class MainPage extends StatelessWidget {
             children: [
               Text(
                 style: Theme.of(context).textTheme.headlineMedium,
-                "Наши котики",
+                "Наши котики (${mockCats.length})",
               ),
-              CatCard(
-                cat: const Cat(
-                  id: "1",
-                  name: "Барсик",
-                  age: 3,
-                  description: "Ласковый и игривый котик. Очень любит спать.",
-                ),
-              ),
-              CatCard(
-                cat: const Cat(
-                  id: "2",
-                  name: "Мурзик",
-                  age: 5,
-                  description: "Спокойный и добрый.",
-                ),
-              ),
-              CatCard(
-                cat: const Cat(
-                  id: "3",
-                  name: "Рыжик",
-                  age: 1,
-                  description: "Энергичный котик.",
-                ),
-              ),
-              CatCard(
-                cat: const Cat(
-                  id: "4",
-                  name: "Его котейшество Барсик Великолепный Первый",
-                  age: 1,
-                  description: "Самый важный кот нашего приюта.",
-                ),
-              ),
+              ...cats,
             ],
           ),
         ),
