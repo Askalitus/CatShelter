@@ -14,7 +14,13 @@ class CatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(16)),
+      ),
+      color: colors.surfaceContainerLow,
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
@@ -25,15 +31,20 @@ class CatCard extends StatelessWidget {
               spacing: 8,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.pets),
+                Icon(color: colors.primary, Icons.pets),
                 Flexible(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(name, style: Theme.of(context).textTheme.titleLarge),
+                      Text(
+                        name,
+                        style: Theme.of(context).textTheme.titleLarge
+                            ?.copyWith(color: colors.onSurface),
+                      ),
                       Text(
                         'Возраст: $age года',
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium
+                            ?.copyWith(color: colors.onSurface),
                       ),
                     ],
                   ),
@@ -43,7 +54,8 @@ class CatCard extends StatelessWidget {
             Text(
               description,
               textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(color: colors.onSurface),
             ),
           ],
         ),
