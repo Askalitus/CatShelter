@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:cat_shelter/widgets/cat_card.dart';
+import 'package:cat_shelter/models/cat.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -19,20 +21,36 @@ class MainPage extends StatelessWidget {
                 "Наши котики",
               ),
               CatCard(
-                name: "Барсик",
-                age: 3,
-                description: "Ласковый и игривый котик. Очень любит спать.",
+                cat: const Cat(
+                  id: "1",
+                  name: "Барсик",
+                  age: 3,
+                  description: "Ласковый и игривый котик. Очень любит спать.",
+                ),
               ),
               CatCard(
-                name: "Мурзик",
-                age: 5,
-                description: "Спокойный и добрый.",
+                cat: const Cat(
+                  id: "2",
+                  name: "Мурзик",
+                  age: 5,
+                  description: "Спокойный и добрый.",
+                ),
               ),
-              CatCard(name: "Рыжик", age: 1, description: "Энергичный котик."),
               CatCard(
-                name: "Его котейшество Барсик Великолепный Первый",
-                age: 1,
-                description: "Самый важный кот нашего приюта.",
+                cat: const Cat(
+                  id: "3",
+                  name: "Рыжик",
+                  age: 1,
+                  description: "Энергичный котик.",
+                ),
+              ),
+              CatCard(
+                cat: const Cat(
+                  id: "4",
+                  name: "Его котейшество Барсик Великолепный Первый",
+                  age: 1,
+                  description: "Самый важный кот нашего приюта.",
+                ),
               ),
             ],
           ),

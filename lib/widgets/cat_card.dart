@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CatCard extends StatelessWidget {
-  final String name;
-  final int age;
-  final String description;
+import 'package:cat_shelter/models/cat.dart';
 
-  const CatCard({
-    super.key,
-    required this.name,
-    required this.age,
-    required this.description,
-  });
+class CatCard extends StatelessWidget {
+  final Cat cat;
+
+  const CatCard({super.key, required this.cat});
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +32,12 @@ class CatCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name,
+                        cat.name,
                         style: Theme.of(context).textTheme.titleLarge
                             ?.copyWith(color: colors.onSurface),
                       ),
                       Text(
-                        'Возраст: $age года',
+                        'Возраст: ${cat.age} года',
                         style: Theme.of(context).textTheme.bodyMedium
                             ?.copyWith(color: colors.onSurface),
                       ),
@@ -52,7 +47,7 @@ class CatCard extends StatelessWidget {
               ],
             ),
             Text(
-              description,
+              cat.description,
               textAlign: TextAlign.start,
               style: Theme.of(context).textTheme.bodyMedium
                   ?.copyWith(color: colors.onSurface),
