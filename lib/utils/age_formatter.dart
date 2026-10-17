@@ -9,7 +9,7 @@ String formatCatAge(int age) {
     return '$age года';
   }
   if (n1 == 1) {
-    return '$age год' ;
+    return '$age год';
   }
   return '$age лет';
 }

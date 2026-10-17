@@ -8,9 +8,6 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Iterable<CatCard> cats = mockCats
-        .map((cat) => CatCard(cat: cat));
-
     return Scaffold(
       appBar: AppBar(title: Text('Кошачий приют'), centerTitle: true),
       body: Padding(
@@ -23,7 +20,7 @@ class MainPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium,
                 "Наши котики (${mockCats.length})",
               ),
-              ...cats,
+              ...mockCats.map((cat) => CatCard(cat: cat)),
             ],
           ),
         ),

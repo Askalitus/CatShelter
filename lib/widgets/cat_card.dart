@@ -35,13 +35,15 @@ class CatCard extends StatelessWidget {
                     children: [
                       Text(
                         cat.name,
-                        style: textTheme.titleLarge
-                            ?.copyWith(color: colors.onSurface),
+                        style: textTheme.titleLarge?.copyWith(
+                          color: colors.onSurface,
+                        ),
                       ),
                       Text(
                         'Возраст: ${formatCatAge(cat.age)}',
-                        style: textTheme.bodyMedium
-                            ?.copyWith(color: colors.onSurface),
+                        style: textTheme.bodyMedium?.copyWith(
+                          color: colors.onSurface,
+                        ),
                       ),
                     ],
                   ),
@@ -51,8 +53,7 @@ class CatCard extends StatelessWidget {
             Text(
               cat.description,
               textAlign: TextAlign.start,
-              style: textTheme.bodyMedium
-                  ?.copyWith(color: colors.onSurface),
+              style: textTheme.bodyMedium?.copyWith(color: colors.onSurface),
             ),
           ],
         ),
