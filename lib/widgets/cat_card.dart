@@ -11,6 +11,7 @@ class CatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Card(
       shape: const RoundedRectangleBorder(
@@ -34,12 +35,12 @@ class CatCard extends StatelessWidget {
                     children: [
                       Text(
                         cat.name,
-                        style: Theme.of(context).textTheme.titleLarge
+                        style: textTheme.titleLarge
                             ?.copyWith(color: colors.onSurface),
                       ),
                       Text(
                         'Возраст: ${formatCatAge(cat.age)}',
-                        style: Theme.of(context).textTheme.bodyMedium
+                        style: textTheme.bodyMedium
                             ?.copyWith(color: colors.onSurface),
                       ),
                     ],
@@ -50,7 +51,7 @@ class CatCard extends StatelessWidget {
             Text(
               cat.description,
               textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.bodyMedium
+              style: textTheme.bodyMedium
                   ?.copyWith(color: colors.onSurface),
             ),
           ],
