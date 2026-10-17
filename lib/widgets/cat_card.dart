@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cat_shelter/models/cat.dart';
+import 'package:cat_shelter/utils/age_formatter.dart';
 
 class CatCard extends StatelessWidget {
   final Cat cat;
@@ -37,7 +38,7 @@ class CatCard extends StatelessWidget {
                             ?.copyWith(color: colors.onSurface),
                       ),
                       Text(
-                        'Возраст: ${cat.age} года',
+                        'Возраст: ${formatCatAge(cat.age)}',
                         style: Theme.of(context).textTheme.bodyMedium
                             ?.copyWith(color: colors.onSurface),
                       ),
