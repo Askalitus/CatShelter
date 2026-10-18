@@ -8,22 +8,30 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(title: Text('Кошачий приют'), centerTitle: true),
-      body: Padding(
+      body: ListView.builder(
         padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: Column(
-            spacing: 20,
-            children: [
-              Text(
-                style: Theme.of(context).textTheme.headlineMedium,
-                "Наши котики (${mockCats.length})",
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Text(
+                'Наши котики (${mockCats.length})',
+                style: textTheme.headlineMedium,
+                textAlign: TextAlign.center,
               ),
-              ...mockCats.map((cat) => CatCard(cat: cat)),
-            ],
-          ),
-        ),
+            );
+          }
+          final cat = mockCats[index - 1];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: CatCard(cat: cat),
+          );
+        },
+        itemCount: mockCats.length + 1,
       ),
     );
   }
