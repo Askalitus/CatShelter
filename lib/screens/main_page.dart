@@ -12,25 +12,20 @@ class MainPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text('Кошачий приют'), centerTitle: true),
-      body: ListView.builder(
+      body: ListView.separated(
         padding: const EdgeInsets.all(20),
         itemBuilder: (context, index) {
           if (index == 0) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Text(
-                'Наши котики (${mockCats.length})',
-                style: textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
+            return Text(
+              'Наши котики (${mockCats.length})',
+              style: textTheme.headlineMedium,
+              textAlign: TextAlign.center,
             );
           }
           final cat = mockCats[index - 1];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: CatCard(cat: cat),
-          );
+          return CatCard(cat: cat);
         },
+        separatorBuilder: (context, index) => const SizedBox(height: 20),
         itemCount: mockCats.length + 1,
       ),
     );
