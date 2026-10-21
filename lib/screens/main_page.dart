@@ -1,33 +1,40 @@
 import 'package:flutter/material.dart';
 
-import 'package:cat_shelter/widgets/cat_card.dart';
+import 'package:cat_shelter/widgets/cat_list.dart';
 import 'package:cat_shelter/data/mock_cats.dart';
+import 'package:cat_shelter/widgets/cat_grid.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+  State<MainPage> createState() => _MainPageState();
+}
 
+class _MainPageState extends State<MainPage> {
+  bool isGridView = false;
+
+  void toggleView() {
+    setState(() {
+      isGridView = !isGridView;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Кошачий приют'), centerTitle: true),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(20),
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return Text(
-              'Наши котики (${mockCats.length})',
-              style: textTheme.headlineMedium,
-              textAlign: TextAlign.center,
-            );
-          }
-          final cat = mockCats[index - 1];
-          return CatCard(cat: cat);
-        },
-        separatorBuilder: (context, index) => const SizedBox(height: 20),
-        itemCount: mockCats.length + 1,
+      appBar: AppBar(
+        title: Text('Кошачий приют'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(isGridView ? Icons.grid_view : Icons.view_list),
+            tooltip: isGridView ? 'Показать списком' : 'Показать сеткой',
+            onPressed: toggleView,
+          ),
+        ],
       ),
+      body: isGridView ? CatGrid(cats: mockCats) : CatList(cats: mockCats),
     );
   }
 }
