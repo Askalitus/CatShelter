@@ -28,7 +28,7 @@ class _MainPageState extends State<MainPage> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(isGridView ? Icons.grid_view : Icons.view_list),
+            icon: Icon(isGridView ? Icons.view_list : Icons.grid_view),
             tooltip: isGridView ? 'Показать списком' : 'Показать сеткой',
             onPressed: toggleView,
           ),
