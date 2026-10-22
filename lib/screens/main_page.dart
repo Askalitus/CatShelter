@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   bool isGridView = false;
-  Set<String> favoriteCatIds = {};
+  final Set<String> favoriteCatIds = {};
 
   void toggleView() {
     setState(() {
