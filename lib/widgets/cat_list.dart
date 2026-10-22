@@ -4,8 +4,15 @@ import 'package:cat_shelter/models/cat.dart';
 
 class CatList extends StatelessWidget {
   final List<Cat> cats;
+  final Set<String> favoriteCatIds;
+  final ValueChanged<String> onFavoriteToggle;
 
-  const CatList({super.key, required this.cats});
+  const CatList({
+    super.key,
+    required this.cats,
+    required this.favoriteCatIds,
+    required this.onFavoriteToggle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,11 @@ class CatList extends StatelessWidget {
           );
         }
         final cat = cats[index - 1];
-        return CatCard(cat: cat);
+        return CatCard(
+          cat: cat,
+          isFavorite: favoriteCatIds.contains(cat.id),
+          onFavoriteToggle: () => onFavoriteToggle(cat.id),
+        );
       },
       separatorBuilder: (context, index) => const SizedBox(height: 20),
       itemCount: cats.length + 1,

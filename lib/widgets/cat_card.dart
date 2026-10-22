@@ -5,8 +5,15 @@ import 'package:cat_shelter/utils/age_formatter.dart';
 
 class CatCard extends StatelessWidget {
   final Cat cat;
+  final bool isFavorite;
+  final VoidCallback onFavoriteToggle;
 
-  const CatCard({super.key, required this.cat});
+  const CatCard({
+    super.key,
+    required this.cat,
+    required this.isFavorite,
+    required this.onFavoriteToggle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +34,10 @@ class CatCard extends StatelessWidget {
             Row(
               spacing: 8,
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Icon(color: colors.primary, Icons.pets),
-                Flexible(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -47,6 +55,13 @@ class CatCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? colors.primary : colors.onSurface,
+                  ),
+                  onPressed: onFavoriteToggle,
                 ),
               ],
             ),

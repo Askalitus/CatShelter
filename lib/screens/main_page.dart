@@ -13,10 +13,21 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   bool isGridView = false;
+  Set<String> favoriteCatIds = {};
 
   void toggleView() {
     setState(() {
       isGridView = !isGridView;
+    });
+  }
+
+  void toggleFavorite(String catId) {
+    setState(() {
+      if (favoriteCatIds.contains(catId)) {
+        favoriteCatIds.remove(catId);
+      } else {
+        favoriteCatIds.add(catId);
+      }
     });
   }
 
@@ -34,7 +45,17 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      body: isGridView ? CatGrid(cats: mockCats) : CatList(cats: mockCats),
+      body: isGridView
+          ? CatGrid(
+              cats: mockCats,
+              favoriteCatIds: favoriteCatIds,
+              onFavoriteToggle: toggleFavorite,
+            )
+          : CatList(
+              cats: mockCats,
+              favoriteCatIds: favoriteCatIds,
+              onFavoriteToggle: toggleFavorite,
+            ),
     );
   }
 }
