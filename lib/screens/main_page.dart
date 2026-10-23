@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
           ),
           IconButton(
             icon: Icon(showFavoritesOnly ? Icons.pets : Icons.favorite),
-            tooltip: isGridView
+            tooltip: showFavoritesOnly
                 ? 'Показать избранных котиков'
                 : 'Показать всех котиков',
             onPressed: toggleFavoritesFilter,

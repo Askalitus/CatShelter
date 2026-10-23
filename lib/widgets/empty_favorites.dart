@@ -10,7 +10,7 @@ class EmptyFavorites extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -29,7 +29,7 @@ class EmptyFavorites extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () => onShowAll(),
+              onPressed: onShowAll,
               child: Text('Все котики'),
             ),
           ],
