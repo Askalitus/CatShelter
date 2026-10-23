@@ -12,7 +12,7 @@ class CatDetailPage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
-    void goBack() {
+    void confirmIntroduction() {
       Navigator.of(context).pop<bool>(true);
     }
 
@@ -22,31 +22,37 @@ class CatDetailPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          spacing: 16,
           children: [
-            SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 20,
-                children: [
-                  Row(
-                    spacing: 8,
-                    children: [
-                      Icon(Icons.pets, color: colorScheme.primary),
-                      Expanded(
-                        child: Text(cat.name, style: textTheme.headlineMedium),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    'Возраст: ${formatCatAge(cat.age)}',
-                    style: textTheme.bodyMedium,
-                  ),
-                  Text(cat.description, style: textTheme.bodyMedium),
-                ],
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 20,
+                  children: [
+                    Row(
+                      spacing: 8,
+                      children: [
+                        Icon(Icons.pets, color: colorScheme.primary),
+                        Expanded(
+                          child: Text(
+                            cat.name,
+                            style: textTheme.headlineMedium,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'Возраст: ${formatCatAge(cat.age)}',
+                      style: textTheme.bodyMedium,
+                    ),
+                    Text(cat.description, style: textTheme.bodyMedium),
+                  ],
+                ),
               ),
             ),
             ElevatedButton(
-              onPressed: goBack,
+              onPressed: confirmIntroduction,
               child: Text('Хочу познакомиться'),
             ),
           ],

@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
       MaterialPageRoute<bool>(builder: (context) => CatDetailPage(cat: cat)),
     );
 
-    if (!mounted || result == null || !result) {
+    if (!mounted || result != true) {
       return;
     }
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
