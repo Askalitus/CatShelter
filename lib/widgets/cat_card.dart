@@ -62,8 +62,8 @@ class CatCard extends StatelessWidget {
                     color: isFavorite ? colors.primary : colors.onSurface,
                   ),
                   tooltip: isFavorite
-                    ? 'Удалить из избранного'
-                    : 'Добавить в избранное',
+                      ? 'Удалить из избранного'
+                      : 'Добавить в избранное',
                   onPressed: onFavoriteToggle,
                 ),
               ],

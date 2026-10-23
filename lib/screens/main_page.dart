@@ -1,8 +1,10 @@
+import 'package:cat_shelter/widgets/empty_favorites.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cat_shelter/widgets/cat_list.dart';
 import 'package:cat_shelter/data/mock_cats.dart';
 import 'package:cat_shelter/widgets/cat_grid.dart';
+import 'package:cat_shelter/models/cat.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,11 +15,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   bool isGridView = false;
+  bool showFavoritesOnly = false;
   final Set<String> favoriteCatIds = {};
 
   void toggleView() {
     setState(() {
       isGridView = !isGridView;
+    });
+  }
+
+  void toggleFavoritesFilter() {
+    setState(() {
+      showFavoritesOnly = !showFavoritesOnly;
     });
   }
 
@@ -33,6 +42,10 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Cat> visibleCats = showFavoritesOnly
+        ? mockCats.where((cat) => favoriteCatIds.contains(cat.id)).toList()
+        : mockCats;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Кошачий приют'),
@@ -43,18 +56,30 @@ class _MainPageState extends State<MainPage> {
             tooltip: isGridView ? 'Показать списком' : 'Показать сеткой',
             onPressed: toggleView,
           ),
+          IconButton(
+            icon: Icon(showFavoritesOnly ? Icons.pets : Icons.favorite),
+            tooltip: isGridView
+                ? 'Показать избранных котиков'
+                : 'Показать всех котиков',
+            onPressed: toggleFavoritesFilter,
+          ),
         ],
       ),
-      body: isGridView
+      body: showFavoritesOnly && visibleCats.isEmpty
+          ? EmptyFavorites(onShowAll: () => toggleFavoritesFilter())
+          : isGridView
           ? CatGrid(
-              cats: mockCats,
+              cats: visibleCats,
               favoriteCatIds: favoriteCatIds,
               onFavoriteToggle: toggleFavorite,
             )
           : CatList(
-              cats: mockCats,
+              cats: visibleCats,
               favoriteCatIds: favoriteCatIds,
               onFavoriteToggle: toggleFavorite,
+              title: showFavoritesOnly
+                  ? 'Избранные котики (${visibleCats.length})'
+                  : 'Наши котики (${visibleCats.length})',
             ),
     );
   }

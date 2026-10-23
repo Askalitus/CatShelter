@@ -6,12 +6,14 @@ class CatList extends StatelessWidget {
   final List<Cat> cats;
   final Set<String> favoriteCatIds;
   final ValueChanged<String> onFavoriteToggle;
+  final String title;
 
   const CatList({
     super.key,
     required this.cats,
     required this.favoriteCatIds,
     required this.onFavoriteToggle,
+    required this.title,
   });
 
   @override
@@ -23,7 +25,7 @@ class CatList extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index == 0) {
           return Text(
-            'Наши котики (${cats.length})',
+            title,
             style: textTheme.headlineMedium,
             textAlign: TextAlign.center,
           );
