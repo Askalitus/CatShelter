@@ -41,9 +41,17 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-  void openCatDetails(Cat cat) {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (context) => CatDetailPage(cat: cat)),
+  Future<void> openCatDetails(Cat cat) async {
+    final bool? result = await Navigator.of(context).push(
+      MaterialPageRoute<bool>(builder: (context) => CatDetailPage(cat: cat)),
+    );
+
+    if (!mounted || result == null || !result) {
+      return;
+    }
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Вы выбрали ${cat.name} для знакомства!')),
     );
   }
 
