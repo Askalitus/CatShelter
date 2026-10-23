@@ -10,6 +10,7 @@ class CatDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(title: Text(cat.name), centerTitle: true),
@@ -23,7 +24,7 @@ class CatDetailPage extends StatelessWidget {
               Row(
                 spacing: 8,
                 children: [
-                  const Icon(Icons.pets),
+                  Icon(Icons.pets, color: colorScheme.primary,),
                   Text(cat.name, style: textTheme.headlineMedium),
                 ],
               ),
