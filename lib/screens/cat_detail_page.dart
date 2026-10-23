@@ -24,8 +24,10 @@ class CatDetailPage extends StatelessWidget {
               Row(
                 spacing: 8,
                 children: [
-                  Icon(Icons.pets, color: colorScheme.primary,),
-                  Text(cat.name, style: textTheme.headlineMedium),
+                  Icon(Icons.pets, color: colorScheme.primary),
+                  Expanded(
+                    child: Text(cat.name, style: textTheme.headlineMedium),
+                  ),
                 ],
               ),
               Text(

@@ -42,8 +42,9 @@ class _MainPageState extends State<MainPage> {
   }
 
   void openCatDetails(Cat cat) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => CatDetailPage(cat: cat)));
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (context) => CatDetailPage(cat: cat)),
+    );
   }
 
   @override
