@@ -28,10 +28,7 @@ class EmptyFavorites extends StatelessWidget {
                 ),
               ],
             ),
-            ElevatedButton(
-              onPressed: onShowAll,
-              child: Text('Все котики'),
-            ),
+            ElevatedButton(onPressed: onShowAll, child: Text('Все котики')),
           ],
         ),
       ),
