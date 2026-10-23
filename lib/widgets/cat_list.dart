@@ -6,6 +6,7 @@ class CatList extends StatelessWidget {
   final List<Cat> cats;
   final Set<String> favoriteCatIds;
   final ValueChanged<String> onFavoriteToggle;
+  final ValueChanged<Cat> onCatTap;
   final String title;
 
   const CatList({
@@ -13,6 +14,7 @@ class CatList extends StatelessWidget {
     required this.cats,
     required this.favoriteCatIds,
     required this.onFavoriteToggle,
+    required this.onCatTap,
     required this.title,
   });
 
@@ -35,6 +37,7 @@ class CatList extends StatelessWidget {
           cat: cat,
           isFavorite: favoriteCatIds.contains(cat.id),
           onFavoriteToggle: () => onFavoriteToggle(cat.id),
+          onTap: () => onCatTap(cat),
         );
       },
       separatorBuilder: (context, index) => const SizedBox(height: 20),

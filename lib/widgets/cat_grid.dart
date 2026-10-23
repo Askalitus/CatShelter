@@ -7,12 +7,14 @@ class CatGrid extends StatelessWidget {
   final List<Cat> cats;
   final Set<String> favoriteCatIds;
   final ValueChanged<String> onFavoriteToggle;
+  final ValueChanged<Cat> onCatTap;
 
   const CatGrid({
     super.key,
     required this.cats,
     required this.favoriteCatIds,
     required this.onFavoriteToggle,
+    required this.onCatTap,
   });
 
   @override
@@ -30,6 +32,7 @@ class CatGrid extends StatelessWidget {
           cat: cats[index],
           isFavorite: favoriteCatIds.contains(cats[index].id),
           onFavoriteToggle: () => onFavoriteToggle(cats[index].id),
+          onTap: () => onCatTap(cats[index]),
         );
       },
       itemCount: cats.length,

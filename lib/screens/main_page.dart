@@ -1,3 +1,4 @@
+import 'package:cat_shelter/screens/cat_detail_page.dart';
 import 'package:cat_shelter/widgets/empty_favorites.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +41,11 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+  void openCatDetails(Cat cat) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => CatDetailPage(cat: cat)));
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Cat> visibleCats = showFavoritesOnly
@@ -72,11 +78,13 @@ class _MainPageState extends State<MainPage> {
               cats: visibleCats,
               favoriteCatIds: favoriteCatIds,
               onFavoriteToggle: toggleFavorite,
+              onCatTap: openCatDetails,
             )
           : CatList(
               cats: visibleCats,
               favoriteCatIds: favoriteCatIds,
               onFavoriteToggle: toggleFavorite,
+              onCatTap: openCatDetails,
               title: showFavoritesOnly
                   ? 'Избранные котики (${visibleCats.length})'
                   : 'Наши котики (${visibleCats.length})',
