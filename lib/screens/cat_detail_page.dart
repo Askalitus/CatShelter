@@ -28,12 +28,12 @@ class _CatDetailPage extends State<CatDetailPage> {
     Navigator.of(context).pop<String>(inputText);
   }
 
-  void onChangeName(String value) {
-    setState(() {
-      if (nameError != null) {
+  void onChangeName(String _) {
+    if (nameError != null) {
+      setState(() {
         nameError = null;
-      }
-    });
+      });
+    }
   }
 
   @override
