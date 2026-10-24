@@ -2,19 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:cat_shelter/models/cat.dart';
 import 'package:cat_shelter/utils/age_formatter.dart';
 
-class CatDetailPage extends StatelessWidget {
+class CatDetailPage extends StatefulWidget {
   final Cat cat;
 
   const CatDetailPage({super.key, required this.cat});
 
   @override
+  State<CatDetailPage> createState() => _CatDetailPage();
+}
+
+class _CatDetailPage extends State<CatDetailPage> {
+  final TextEditingController nameController = TextEditingController();
+  String? nameError;
+
+  void confirmIntroduction() {
+    final String inputText = nameController.text.trim();
+
+    if (inputText.isEmpty) {
+      setState(() {
+        nameError = 'Введите ваше имя';
+      });
+      return;
+    }
+
+    Navigator.of(context).pop<String>(inputText);
+  }
+
+  void onChangeName(String value) {
+    setState(() {
+      if (nameError != null) {
+        nameError = null;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-
-    void confirmIntroduction() {
-      Navigator.of(context).pop<bool>(true);
-    }
+    final cat = widget.cat;
 
     return Scaffold(
       appBar: AppBar(title: Text(cat.name), centerTitle: true),
@@ -47,6 +79,17 @@ class CatDetailPage extends StatelessWidget {
                       style: textTheme.bodyMedium,
                     ),
                     Text(cat.description, style: textTheme.bodyMedium),
+                    TextField(
+                      controller: nameController,
+                      textCapitalization: TextCapitalization.words,
+                      decoration: InputDecoration(
+                        labelText: 'Ваше имя',
+                        hintText: 'Как к вам обращаться?',
+                        border: const OutlineInputBorder(),
+                        errorText: nameError,
+                      ),
+                      onChanged: onChangeName,
+                    ),
                   ],
                 ),
               ),

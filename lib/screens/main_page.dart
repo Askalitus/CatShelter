@@ -42,16 +42,18 @@ class _MainPageState extends State<MainPage> {
   }
 
   Future<void> openCatDetails(Cat cat) async {
-    final bool? result = await Navigator.of(context).push(
-      MaterialPageRoute<bool>(builder: (context) => CatDetailPage(cat: cat)),
+    final String? visitorName = await Navigator.of(context).push(
+      MaterialPageRoute<String>(builder: (context) => CatDetailPage(cat: cat)),
     );
 
-    if (!mounted || result != true) {
+    if (!mounted || visitorName == null || visitorName.isEmpty) {
       return;
     }
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Вы выбрали ${cat.name} для знакомства!')),
+      SnackBar(
+        content: Text('$visitorName, вы запросили знакомство с ${cat.name}!'),
+      ),
     );
   }
 
