@@ -112,7 +112,7 @@ class _CatDetailPage extends State<CatDetailPage> {
                           final splitEmail = email.split('@');
 
                           if (email.isEmpty ||
-                              splitEmail.length == 1 ||
+                              splitEmail.length != 2 ||
                               splitEmail[0].isEmpty ||
                               splitEmail[1].isEmpty) {
                             return 'Некорректный email';
