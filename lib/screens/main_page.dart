@@ -1,3 +1,4 @@
+import 'package:cat_shelter/models/introduction_request.dart';
 import 'package:cat_shelter/screens/cat_detail_page.dart';
 import 'package:cat_shelter/widgets/empty_favorites.dart';
 import 'package:flutter/material.dart';
@@ -42,17 +43,24 @@ class _MainPageState extends State<MainPage> {
   }
 
   Future<void> openCatDetails(Cat cat) async {
-    final String? visitorName = await Navigator.of(context).push(
-      MaterialPageRoute<String>(builder: (context) => CatDetailPage(cat: cat)),
+    final IntroductionRequest? result = await Navigator.of(context).push(
+      MaterialPageRoute<IntroductionRequest>(
+        builder: (context) => CatDetailPage(cat: cat),
+      ),
     );
 
-    if (!mounted || visitorName == null || visitorName.isEmpty) {
+    if (!mounted ||
+        result == null ||
+        result.name.isEmpty ||
+        result.email.isEmpty) {
       return;
     }
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('$visitorName, вы запросили знакомство с ${cat.name}!'),
+        content: Text(
+          '${result.name}, ваша заявка на знакомство с ${cat.name} сформирована!',
+        ),
       ),
     );
   }
